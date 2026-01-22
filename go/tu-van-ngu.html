@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>Tư vấn giấc ngủ</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f6f8;
+    padding: 20px;
+}
+.container {
+    max-width: 430px;
+    margin: auto;
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+}
+h1 {
+    text-align: center;
+    color: #2c7be5;
+}
+label {
+    font-weight: bold;
+    margin-top: 12px;
+    display: block;
+}
+select, button {
+    width: 100%;
+    padding: 10px;
+    margin-top: 8px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+button {
+    background: #2c7be5;
+    color: white;
+    font-size: 16px;
+    border: none;
+    margin-top: 16px;
+}
+.result {
+    margin-top: 20px;
+    background: #f1f7ff;
+    padding: 15px;
+    border-radius: 8px;
+}
+.notice {
+    font-size: 13px;
+    color: #555;
+    margin-top: 12px;
+}
+.link-btn {
+    display: block;
+    text-align: center;
+    margin-top: 15px;
+    background: #28a745;
+    color: white;
+    padding: 12px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: bold;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>🌙 Tư vấn giấc ngủ</h1>
+
+    <label>Bạn thường ngủ lúc:</label>
+    <select id="sleepTime">
+        <option value="som">Trước 23h</option>
+        <option value="muon">Sau 23h</option>
+    </select>
+
+    <label>Thời gian ngủ mỗi đêm:</label>
+    <select id="sleepHours">
+        <option value="du">Từ 7 tiếng trở lên</option>
+        <option value="thieu">Dưới 7 tiếng</option>
+    </select>
+
+    <label>Bạn có hay tỉnh giấc giữa đêm?</label>
+    <select id="wakeUp">
+        <option value="khong">Không</option>
+        <option value="co">Có</option>
+    </select>
+
+    <label>Mức độ căng thẳng hiện tại:</label>
+    <select id="stress">
+        <option value="thap">Thấp</option>
+        <option value="trungbinh">Trung bình</option>
+        <option value="cao">Cao</option>
+    </select>
+
+    <button onclick="analyze()">Xem kết quả</button>
+
+    <div id="result" class="result" style="display:none;"></div>
+
+    <a href="https://LINKTREE_CUA_ANH" class="link-btn">
+        🌿 Gợi ý hỗ trợ giấc ngủ
+    </a>
+
+    <div class="notice">
+        ⚠️ Kết quả chỉ mang tính tham khảo, không thay thế tư vấn y tế chuyên môn.
+    </div>
+</div>
+
+<script>
+function analyze() {
+    let score = 0;
+
+    if (sleepTime.value === "muon") score++;
+    if (sleepHours.value === "thieu") score++;
+    if (wakeUp.value === "co") score++;
+    if (stress.value === "cao") score++;
+
+    let text = "";
+
+    if (score <= 1) {
+        text = "Giấc ngủ của bạn hiện tại tương đối ổn. Bạn có thói quen ngủ khá tốt.";
+    } else if (score <= 3) {
+        text = "Giấc ngủ của bạn có dấu hiệu chưa ổn định. Có thể do ngủ muộn hoặc căng thẳng.";
+    } else {
+        text = "Giấc ngủ của bạn có dấu hiệu kém chất lượng. Bạn nên quan tâm hơn đến thói quen sinh hoạt và thư giãn tinh thần.";
+    }
+
+    document.getElementById("result").style.display = "block";
+    document.getElementById("result").innerHTML = `
+        <strong>📊 Đánh giá:</strong><br>${text}<br><br>
+        <strong>💡 Gợi ý tham khảo:</strong>
+        <ul>
+            <li>Thử ngủ trước 23h</li>
+            <li>Giảm dùng điện thoại trước khi ngủ</li>
+            <li>Thư giãn nhẹ 10–15 phút</li>
+        </ul>
+    `;
+}
+</script>
+
+</body>
+</html>
