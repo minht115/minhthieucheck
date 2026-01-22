@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>Bác sĩ Gan AI – Test nhanh 30s</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f6f8;
+    margin: 0;
+    padding: 0;
+}
+.container {
+    max-width: 420px;
+    margin: auto;
+    background: #ffffff;
+    min-height: 100vh;
+    padding: 20px;
+}
+h1 {
+    font-size: 22px;
+    text-align: center;
+}
+.sub {
+    font-size: 13px;
+    color: #666;
+    text-align: center;
+    margin-bottom: 20px;
+}
+.question {
+    margin-bottom: 15px;
+}
+.question p {
+    font-weight: bold;
+}
+label {
+    display: block;
+    margin: 6px 0;
+}
+button {
+    width: 100%;
+    padding: 14px;
+    background: #2e7d32;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    margin-top: 15px;
+}
+.result {
+    background: #e8f5e9;
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 20px;
+}
+.warning {
+    font-size: 12px;
+    color: #888;
+    margin-top: 10px;
+}
+.link-btn {
+    display: block;
+    text-align: center;
+    background: #ff9800;
+    color: #fff;
+    padding: 14px;
+    border-radius: 8px;
+    text-decoration: none;
+    margin-top: 15px;
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+<h1>🧠 Bác sĩ Gan AI</h1>
+<div class="sub">
+Hệ thống tư vấn thông tin – không thay thế bác sĩ
+</div>
+
+<form id="ganForm">
+<div class="question">
+<p>1️⃣ Bạn có thường xuyên thức khuya sau 23h?</p>
+<label><input type="radio" name="q1" value="2" required> Thường xuyên</label>
+<label><input type="radio" name="q1" value="1"> Thỉnh thoảng</label>
+<label><input type="radio" name="q1" value="0"> Hiếm khi</label>
+</div>
+
+<div class="question">
+<p>2️⃣ Bạn có sử dụng rượu bia?</p>
+<label><input type="radio" name="q2" value="2" required> Thường xuyên</label>
+<label><input type="radio" name="q2" value="1"> Thỉnh thoảng</label>
+<label><input type="radio" name="q2" value="0"> Không</label>
+</div>
+
+<div class="question">
+<p>3️⃣ Bạn có hay mệt mỏi vào buổi sáng?</p>
+<label><input type="radio" name="q3" value="2" required> Hay gặp</label>
+<label><input type="radio" name="q3" value="1"> Thỉnh thoảng</label>
+<label><input type="radio" name="q3" value="0"> Hiếm</label>
+</div>
+
+<div class="question">
+<p>4️⃣ Vòng bụng của bạn có xu hướng tăng?</p>
+<label><input type="radio" name="q4" value="2" required> Có</label>
+<label><input type="radio" name="q4" value="1"> Hơi tăng</label>
+<label><input type="radio" name="q4" value="0"> Không</label>
+</div>
+
+<div class="question">
+<p>5️⃣ Chế độ ăn của bạn nhiều dầu mỡ?</p>
+<label><input type="radio" name="q5" value="2" required> Thường xuyên</label>
+<label><input type="radio" name="q5" value="1"> Thỉnh thoảng</label>
+<label><input type="radio" name="q5" value="0"> Ít</label>
+</div>
+
+<button type="button" onclick="tinhKetQua()">Xem kết quả</button>
+</form>
+
+<div id="ketqua"></div>
+
+</div>
+
+<script>
+function tinhKetQua() {
+    let total = 0;
+    const form = document.getElementById("ganForm");
+    const data = new FormData(form);
+    for (let value of data.values()) {
+        total += parseInt(value);
+    }
+
+    let mucDo = "";
+    let moTa = "";
+
+    if (total <= 3) {
+        mucDo = "🟢 Nguy cơ thấp";
+        moTa = "Lối sống hiện tại của bạn tương đối ổn. Bạn nên duy trì ăn uống lành mạnh và nghỉ ngơi hợp lý để hỗ trợ gan.";
+    } else if (total <= 7) {
+        mucDo = "🟡 Nguy cơ trung bình";
+        moTa = "Một số thói quen sinh hoạt của bạn có thể khiến gan phải hoạt động nhiều hơn bình thường. Bạn nên chú ý chế độ ăn và giấc ngủ.";
+    } else {
+        mucDo = "🔴 Nguy cơ cao";
+        moTa = "Nhiều yếu tố trong sinh hoạt có thể liên quan đến việc gan đang chịu áp lực. Bạn nên cân nhắc đi khám bác sĩ để được tư vấn trực tiếp.";
+    }
+
+    document.getElementById("ketqua").innerHTML = `
+    <div class="result">
+        <h3>${mucDo}</h3>
+        <p>${moTa}</p>
+        <div class="warning">
+        ⚠️ Nội dung chỉ mang tính tham khảo, không thay thế cho chẩn đoán hoặc điều trị của bác sĩ.
+        </div>
+        <a class="link-btn" href="LINK_AFFILIATE_CUA_ANH" target="_blank">
+        👉 Giải pháp hỗ trợ gan
+        </a>
+    </div>
+    `;
+}
+</script>
+
+</body>
+</html>
