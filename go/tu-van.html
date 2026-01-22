@@ -2,7 +2,7 @@
 <html lang="vi">
 <head>
 <meta charset="UTF-8">
-<title>Bác sĩ Gan AI – Test nhanh 30s</title>
+<title>Bác sĩ Gan AI – Test tham khảo 30s</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
 body {
@@ -21,11 +21,20 @@ body {
 h1 {
     font-size: 22px;
     text-align: center;
+    margin-bottom: 5px;
 }
 .sub {
     font-size: 13px;
-    color: #666;
+    color: #555;
     text-align: center;
+    margin-bottom: 15px;
+}
+.disclaimer {
+    font-size: 12px;
+    color: #888;
+    background: #fff8e1;
+    padding: 10px;
+    border-radius: 6px;
     margin-bottom: 20px;
 }
 .question {
@@ -33,10 +42,12 @@ h1 {
 }
 .question p {
     font-weight: bold;
+    margin-bottom: 5px;
 }
 label {
     display: block;
     margin: 6px 0;
+    font-size: 14px;
 }
 button {
     width: 100%;
@@ -56,7 +67,7 @@ button {
 }
 .warning {
     font-size: 12px;
-    color: #888;
+    color: #666;
     margin-top: 10px;
 }
 .link-btn {
@@ -68,18 +79,23 @@ button {
     border-radius: 8px;
     text-decoration: none;
     margin-top: 15px;
+    font-weight: bold;
 }
 </style>
 </head>
 
 <body>
 <div class="container">
+
 <h1>🧠 Bác sĩ Gan AI</h1>
-<div class="sub">
-Hệ thống tư vấn thông tin – không thay thế bác sĩ
+<div class="sub">Hệ thống tư vấn thông tin sức khỏe gan</div>
+
+<div class="disclaimer">
+⚠️ Nội dung trên trang này chỉ mang tính <b>tham khảo thông tin</b>, không chẩn đoán, không điều trị và không thay thế tư vấn của bác sĩ.
 </div>
 
 <form id="ganForm">
+
 <div class="question">
 <p>1️⃣ Bạn có thường xuyên thức khuya sau 23h?</p>
 <label><input type="radio" name="q1" value="2" required> Thường xuyên</label>
@@ -95,10 +111,10 @@ Hệ thống tư vấn thông tin – không thay thế bác sĩ
 </div>
 
 <div class="question">
-<p>3️⃣ Bạn có hay mệt mỏi vào buổi sáng?</p>
+<p>3️⃣ Bạn có hay mệt mỏi, uể oải vào buổi sáng?</p>
 <label><input type="radio" name="q3" value="2" required> Hay gặp</label>
 <label><input type="radio" name="q3" value="1"> Thỉnh thoảng</label>
-<label><input type="radio" name="q3" value="0"> Hiếm</label>
+<label><input type="radio" name="q3" value="0"> Hiếm khi</label>
 </div>
 
 <div class="question">
@@ -109,7 +125,7 @@ Hệ thống tư vấn thông tin – không thay thế bác sĩ
 </div>
 
 <div class="question">
-<p>5️⃣ Chế độ ăn của bạn nhiều dầu mỡ?</p>
+<p>5️⃣ Chế độ ăn của bạn có nhiều dầu mỡ?</p>
 <label><input type="radio" name="q5" value="2" required> Thường xuyên</label>
 <label><input type="radio" name="q5" value="1"> Thỉnh thoảng</label>
 <label><input type="radio" name="q5" value="0"> Ít</label>
@@ -125,8 +141,7 @@ Hệ thống tư vấn thông tin – không thay thế bác sĩ
 <script>
 function tinhKetQua() {
     let total = 0;
-    const form = document.getElementById("ganForm");
-    const data = new FormData(form);
+    const data = new FormData(document.getElementById("ganForm"));
     for (let value of data.values()) {
         total += parseInt(value);
     }
@@ -135,14 +150,14 @@ function tinhKetQua() {
     let moTa = "";
 
     if (total <= 3) {
-        mucDo = "🟢 Nguy cơ thấp";
-        moTa = "Lối sống hiện tại của bạn tương đối ổn. Bạn nên duy trì ăn uống lành mạnh và nghỉ ngơi hợp lý để hỗ trợ gan.";
+        mucDo = "🟢 Mức nguy cơ tham khảo: Thấp";
+        moTa = "Thói quen sinh hoạt của bạn hiện tại khá ổn. Bạn nên duy trì lối sống lành mạnh để hỗ trợ gan hoạt động tốt.";
     } else if (total <= 7) {
-        mucDo = "🟡 Nguy cơ trung bình";
-        moTa = "Một số thói quen sinh hoạt của bạn có thể khiến gan phải hoạt động nhiều hơn bình thường. Bạn nên chú ý chế độ ăn và giấc ngủ.";
+        mucDo = "🟡 Mức nguy cơ tham khảo: Trung bình";
+        moTa = "Một số thói quen của bạn có thể khiến gan phải hoạt động nhiều hơn bình thường. Bạn nên chú ý ăn uống và nghỉ ngơi hợp lý.";
     } else {
-        mucDo = "🔴 Nguy cơ cao";
-        moTa = "Nhiều yếu tố trong sinh hoạt có thể liên quan đến việc gan đang chịu áp lực. Bạn nên cân nhắc đi khám bác sĩ để được tư vấn trực tiếp.";
+        mucDo = "🔴 Mức nguy cơ tham khảo: Cao";
+        moTa = "Nhiều yếu tố sinh hoạt của bạn có thể liên quan đến việc gan đang chịu áp lực. Bạn nên cân nhắc đi khám bác sĩ để được tư vấn trực tiếp.";
     }
 
     document.getElementById("ketqua").innerHTML = `
@@ -150,7 +165,7 @@ function tinhKetQua() {
         <h3>${mucDo}</h3>
         <p>${moTa}</p>
         <div class="warning">
-        ⚠️ Nội dung chỉ mang tính tham khảo, không thay thế cho chẩn đoán hoặc điều trị của bác sĩ.
+        ⚠️ Kết quả này chỉ mang tính tham khảo, không phải chẩn đoán y khoa. Nếu triệu chứng kéo dài hoặc nặng hơn, hãy đi khám bác sĩ.
         </div>
         <a class="link-btn" href="LINK_AFFILIATE_CUA_ANH" target="_blank">
         👉 Giải pháp hỗ trợ gan
